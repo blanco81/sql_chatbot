@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-community
+psycopg2-binary
+python-dotenv
+groq
+jinja2
+python-multipart

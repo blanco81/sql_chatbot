@@ -1,0 +1,9 @@
+DB_HOST="127.0.0.1"
+DB_NAME="tienda_libros"
+DB_USER="user"
+DB_PASSWORD="pass"
+DB_PORT=5432
+GROQ_API_KEY="gsk_g0HZb......................"
+MODEL_NAME="llama3-8b-8192"
+
+
