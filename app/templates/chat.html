@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Chatbot SQL</h2>
+        <p>Haz preguntas sobre la base de datos</p>
+    </div>
+    
+    <div class="chat-history" id="chatHistory">
+        {% if user_input and bot_response %}
+        <div class="message user-message">
+            <strong>Tú:</strong> {{ user_input }}
+        </div>
+        <div class="message bot-message">
+            <strong>Bot:</strong> {{ bot_response | safe }}
+        </div>
+        {% endif %}
+    </div>
+    
+    <form action="/query" method="post" class="chat-form">
+        <input type="text" name="user_input" placeholder="Escribe tu pregunta..." required>
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <div class="examples">
+        <h3>Ejemplos:</h3>
+        <ul>
+            <li>¿Cuántos clientes hay registrados?</li>
+            <li>Muéstrame el productos más caro</li>
+            <li>¿Qué producto ha comprado Juan Pérez?</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

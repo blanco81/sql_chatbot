@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section class="hero">
+        <h2>Bienvenido al Chatbot SQL</h2>
+        <p>Puedes hacer preguntas en lenguaje natural sobre la base de datos PostgreSQL</p>
+        <a href="/chat" class="btn">Comenzar</a>
+    </section>
+    
+    <section class="features">
+        <div class="feature">
+            <h3>Consulta Natural</h3>
+            <p>Pregunta como si hablaras con un humano</p>
+        </div>
+        <div class="feature">
+            <h3>Base de Datos Real</h3>
+            <p>Conectado a PostgreSQL con 4 tablas relacionadas</p>
+        </div>
+        <div class="feature">
+            <h3>Tecnología Avanzada</h3>
+            <p>Utiliza LangChain, Groq y Llama3</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

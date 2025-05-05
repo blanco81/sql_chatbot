@@ -1,0 +1,61 @@
+CREATE DATABASE tienda_libros;
+
+
+-- Tabla 1: Clientes
+CREATE TABLE clientes (
+    cliente_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    fecha_registro DATE DEFAULT CURRENT_DATE
+);
+
+-- Tabla 2: Productos
+CREATE TABLE productos (
+    producto_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    categoria VARCHAR(50)
+);
+
+-- Tabla 3: Pedidos
+CREATE TABLE pedidos (
+    pedido_id SERIAL PRIMARY KEY,
+    cliente_id INTEGER REFERENCES clientes(cliente_id),
+    fecha_pedido DATE DEFAULT CURRENT_DATE,
+    estado VARCHAR(20) DEFAULT 'pendiente'
+);
+
+-- Tabla 4: Detalles_Pedido
+CREATE TABLE detalles_pedido (
+    detalle_id SERIAL PRIMARY KEY,
+    pedido_id INTEGER REFERENCES pedidos(pedido_id),
+    producto_id INTEGER REFERENCES productos(producto_id),
+    cantidad INTEGER NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL
+);
+
+
+
+-------------------------------------------------------------------
+
+
+-- Insertar datos de ejemplo
+INSERT INTO clientes (nombre, email) VALUES 
+('Juan Pérez', 'juan@example.com'),
+('María García', 'maria@example.com'),
+('Carlos López', 'carlos@example.com');
+
+INSERT INTO productos (nombre, precio, categoria) VALUES 
+('Laptop', 1200.00, 'Electrónicos'),
+('Teléfono', 600.00, 'Electrónicos'),
+('Libro Python', 45.00, 'Libros');
+
+INSERT INTO pedidos (cliente_id, estado) VALUES 
+(1, 'completado'),
+(2, 'pendiente'),
+(1, 'en proceso');
+
+INSERT INTO detalles_pedido (pedido_id, producto_id, cantidad, precio_unitario) VALUES 
+(1, 1, 1, 1200.00),
+(1, 3, 2, 45.00),
+(2, 2, 1, 600.00);
